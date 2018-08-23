@@ -33,8 +33,11 @@ session_start();
   <body>
   <style>
   .home{
+    padding-top:30px;
+    padding-left:30px;
     background: url('../assets/imgs/blue.png') center / cover;
     background-attachment: fixed;
+    height: 300px;
   }
   </style>
   <div class="demo-layout-waterfall mdl-layout mdl-js-layout">
@@ -81,7 +84,7 @@ session_start();
   <main class="mdl-layout__content">
     <div class="page-content">
       <div class='home'>
-      
+        <h1>home.div</h1>
       </div>
     </div>
   </main>
