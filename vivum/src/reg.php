@@ -34,7 +34,7 @@ if ($_POST['submit'] && isset($_POST['username']) && !empty($_POST['username']) 
     //} else echo 'NO RESPONSE';
   } else { ?>
     <div class="alert alert-danger">REGISTRATION ERROR: 
-    <?
+<?php
     echo mysqli_connect_error() . "</div>";
     session_destroy();
   }
@@ -82,7 +82,7 @@ if ($_POST['submit'] && isset($_POST['username']) && !empty($_POST['username']) 
           <h1 style="color:#fefefe;">Register</h1>
       </center>
       <P></P>
-      <form method="post" action="register.php">
+      <form method="post" action="reg.php">
         <div class="form-group">
           <label for="y"><span class="glyphicon glyphicon-user"></span> Username</label>
           <input type="text" name="username" placeholder="Username" class="form-control" id="y" required="true" maxlength="30" autocomplete="off" />
