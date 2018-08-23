@@ -84,6 +84,7 @@ if (isset($_SESSION['userinfo']['id'])) {
         <h1>questions.div</h1>
         <p><div id="quesp" class="mdl-progress mdl-js-progress"></div></p>
       </div>
+      <h2>questions to solve<h2>
       </div>
     </section>
   </main>
