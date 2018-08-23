@@ -33,7 +33,7 @@ session_start();
   <body>
   <style>
   .home{
-    background: url('../assets/imgs/bg-polygon.jpg') center / cover;
+    background: url('../assets/imgs/blue.png') center / cover;
     background-attachment: fixed;
   }
   </style>
