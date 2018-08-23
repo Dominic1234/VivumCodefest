@@ -2,13 +2,13 @@
 error_reporting(E_ALL & ~E_NOTICE);
 session_start();
 
-/*if (isset($_SESSION['userinfo']['id'])) {*/
+if (isset($_SESSION['userinfo']['id'])) {
   $u = $_SESSION['userinfo'];
-  /*echo "<SCRIPT>console.log(\"Logged in.\")</SCRIPT>";
+  echo "<SCRIPT>console.log(\"Logged in.\")</SCRIPT>";
 } else {
   echo '<script>window.location.replace("/")</script>';
   die();
-}*/
+}
 
 ?>
   <!DOCTYPE html>
@@ -90,10 +90,10 @@ session_start();
 </div>
 <script>
   document.querySelector('#overallp').addEventListener('mdl-componentupgraded', function() {
-    this.MaterialProgress.setProgress(<?php echo 44;//$u['grade'];?>);
+    this.MaterialProgress.setProgress(<?php echo $u['grade'];?>);
   });
   document.querySelector('#overallp').addEventListener('mdl-componentupgraded', function() {
-    this.MaterialProgress.setProgress(<?php echo 39;//$u['score'];?>);
+    this.MaterialProgress.setProgress(<?php echo $u['score'];?>);
   });
 
 </script>

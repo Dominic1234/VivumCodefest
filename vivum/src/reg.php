@@ -13,33 +13,31 @@ if ($_POST['submit'] && isset($_POST['username']) && !empty($_POST['username']) 
   //$uniqueid = uniqid();
   $password = strip_tags($_POST['password']);
   $fname    = strip_tags($_POST['fname']);
-  $grade    = strip_tags($_POST['grade']);
+  $grade    = 11;//strip_tags($_POST['grade']);
   $score    = strip_tags($_POST['score']);
        $sec = strip_tags($_POST['sec']);
 
 
 
-  $sql = "INSERT INTO std VALUES (NULL,'$username','$password','$fname','$grade','$score','$sec', NULL);";
+  $sql = 'INSERT INTO std VALUES (NULL,"'.$username.'","'.$password.'","'.$fname.'",'.$grade.',"'.$sec.'",NULL, NULL);';
   $query  = mysqli_query($conn, $sql);
-  echo $query;
+  echo "<script>console.log('q: ".strip_tags($sql)."');</script>";
   $cquery = mysqli_query($conn, "SELECT id FROM std WHERE uname = '$username';");
 
-  if ($query && $cquery) {
-    $row    = mysqli_fetch_row($cquery);
-    $userid = $row[0];
+  if ($query) {
+   /* $row    = mysqli_fetch_row($cquery);
+    $userid = $row[0];*/
 
 
-    echo "document.location.href='login.php';</script>";
-    echo '<META HTTP-EQUIV="refresh" content="0;URL=login.php">';
+    echo "document.location.href='index.php';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=index.php">';
     //} else echo 'NO RESPONSE';
-  } else { ?>
-    <div class="alert alert-danger">REGISTRATION ERROR: 
-<?php
-    echo mysqli_connect_error() . "</div>";
+  } else { 
+    echo "<div class=\"alert alert-danger\">REGISTRATION ERROR:" . mysqli_connect_error() . "</div><script>console.log('ERROR: ".mysqli_connect_error() ."');</script>";
     session_destroy();
   }
 
-}
+} else echo "<script>console.log('fggfdg');</script>"
 
 ?>
   <!DOCTYPE html>
@@ -85,25 +83,25 @@ if ($_POST['submit'] && isset($_POST['username']) && !empty($_POST['username']) 
       <form method="post" action="reg.php">
         <div class="form-group">
           <label for="y"><span class="glyphicon glyphicon-user"></span> Username</label>
-          <input type="text" name="username" placeholder="Username" class="form-control" id="y" required="true" maxlength="30" autocomplete="off" />
+          <input type="text" name="username" placeholder="Username" class="form-control" id="y" required="true" maxlength="30"/>
           <br />
         </div>
         <div class="form-group">
           <label for="z"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-          <input type="password" name="password" placeholder="Password" class="form-control" id="z" required="true" maxlength="30" autocomplete="off" />
+          <input type="password" name="password" placeholder="Password" class="form-control" id="z" required="true" maxlength="30"/>
         </div>
         <div class="form-group">
           <label for="p"><span class="glyphicon glyphicon-eye-open"></span> Confirm Password</label>
-          <input type="password" name="passwordc" placeholder="Confirm Password" class="form-control" id="p" required="true" maxlength="30" autocomplete="off" />
+          <input type="password" name="passwordc" placeholder="Confirm Password" class="form-control" id="p" required="true" maxlength="30"/>
         </div>
         <div class="form-group">
           <label for="f">Full Name</label>
-          <input type="text" name="fname" placeholder="fname" class="form-control" id="f" required="true" maxlength="30" autocomplete="off" />
+          <input type="text" name="fname" placeholder="fname" class="form-control" id="f" required="true" maxlength="30" />
           <br />
         </div>
         <div class="form-group">
-          <label for="e"><span class="glyphicon glyphicon-email"></span> Email</label>
-          <input type="email" name="email" placeholder="email" class="form-control" id="e" required="true" maxlength="50" autocomplete="off" />
+          <label for="e"><span class="glyphicon glyphicon-email"></span> Section</label>
+          <input type="text" name="sec" placeholder="sec" class="form-control" id="e" required="true" maxlength="1"/>
           <br />
         </div>
         <p></p>
