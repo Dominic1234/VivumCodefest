@@ -16,7 +16,7 @@ session_start();
 
   <head>
         <meta charset="utf-8">
-        <title>Random Thoughts at Random Moments</title>
+        <title>viv.um</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="assets\css\bootstrap.min.css">
@@ -31,6 +31,12 @@ session_start();
     </head>
 
   <body>
+  <style>
+  .home{
+    background: url('../assets/imgs/bg-polygon.jpg') center / cover;
+    background-attachment: fixed;
+  }
+  </style>
   <div class="demo-layout-waterfall mdl-layout mdl-js-layout">
   <header class="mdl-layout__header mdl-layout__header--waterfall">
     <!-- Top row, always visible -->
@@ -63,16 +69,21 @@ session_start();
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Title</span>
+    <span class="mdl-layout-title"><code>viv.um</code></span>
     <nav class="mdl-navigation">
+    <span style="margin:auto;">Hey, <?php echo $u['username']; ?></span>
+
       <a class="mdl-navigation__link" href="">Link</a>
       <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="logout.php">Logout</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
-    <div class="page-content"><!-- Your content goes here --></div>
+    <div class="page-content">
+      <div class='home'>
+      
+      </div>
+    </div>
   </main>
 </div>
   </body>
