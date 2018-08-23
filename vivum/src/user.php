@@ -32,7 +32,7 @@ session_start();
 
   <body>
   <style>
-  .home{
+  .home, .ques{
     padding-top:30px;
     padding-left:30px;
     background: url('../assets/imgs/blue.png') center / cover;
@@ -40,55 +40,63 @@ session_start();
     height: 300px;
   }
   </style>
-  <div class="demo-layout-waterfall mdl-layout mdl-js-layout">
-  <header class="mdl-layout__header mdl-layout__header--waterfall">
-    <!-- Top row, always visible -->
+<!-- Simple header with scrollable tabs. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
       <span class="mdl-layout-title">viv.um</span>
       <div class="mdl-layout-spacer"></div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-        <label class="mdl-button mdl-js-button mdl-button--icon"
-               for="waterfall-exp">
-          <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-          <input class="mdl-textfield__input" type="text" name="sample"
-                 id="waterfall-exp">
-        </div>
-      </div>
-    </div>
-    <!-- Bottom row, not visible on scroll -->
-    <div class="mdl-layout__header-row">
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation -->
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
         <span class="mdl-navigation__link">Hey, <?php echo $u['username']; ?></span>
         <a class="mdl-navigation__link" href="logout.php">Logout</a>
       </nav>
+
+    </div>
+    <!-- Tabs -->
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      <a href="#home" class="mdl-layout__tab is-active" style="text-decoration:none;">Home</a>
+      <a href="#ques" class="mdl-layout__tab">Questions</a>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title"><code>viv.um</code></span>
     <nav class="mdl-navigation">
     <span style="margin:auto;">Hey, <?php echo $u['username']; ?></span>
-
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="#home">Home</a>
+      <a class="mdl-navigation__link" href="#ques">Questions</a>
       <a class="mdl-navigation__link" href="logout.php">Logout</a>
     </nav>
+
   </div>
   <main class="mdl-layout__content">
-    <div class="page-content">
-      <div class='home'>
+    <section class="mdl-layout__tab-panel is-active" id="home">
+      <div class="page-content">
+      <div class='home mdl-tabs__panel is-active'>
         <h1>home.div</h1>
+        <p><div id="overallp" class="mdl-progress mdl-js-progress"></div></p>
       </div>
-    </div>
+      </div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="ques">
+      <div class="page-content">
+      <div class='ques mdl-tabs__panel' id='ques'>
+        <h1>questions.div</h1>
+        <p><div id="quesp" class="mdl-progress mdl-js-progress"></div></p>
+      </div>
+      </div>
+    </section>
   </main>
 </div>
+<script>
+  document.querySelector('#overallp').addEventListener('mdl-componentupgraded', function() {
+    this.MaterialProgress.setProgress(<?php echo 44;//$u['grade'];?>);
+  });
+  document.querySelector('#overallp').addEventListener('mdl-componentupgraded', function() {
+    this.MaterialProgress.setProgress(<?php echo 39;//$u['score'];?>);
+  });
+
+</script>
   </body>
 
   </html>
